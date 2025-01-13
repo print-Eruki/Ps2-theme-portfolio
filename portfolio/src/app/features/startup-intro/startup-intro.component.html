@@ -1,0 +1,25 @@
+<div class="screen">
+  <div class="content">
+    <p class="copyright">Sony Computer Entertainment</p>
+    <p class="branding">
+      Playstation<span class="is-small">®</span>&nbsp;2
+    </p>
+  </div>
+  <div class="inner">
+    <div class="inner-bg"></div>
+    <div class="particles">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- for loop to create the boxes -->
+    <div *ngFor="let box of boxes" class="box-container">
+      <div class="box">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,8 +30,8 @@ export class PS2DotsComponentComponent implements OnInit, AfterViewInit, OnDestr
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.el.nativeElement.appendChild(this.renderer.domElement);
 
-    const geometry = new THREE.SphereGeometry(0.15, 15, 100);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const geometry = new THREE.SphereGeometry(0.15, 15, 15);
+    const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
     this.dot = new THREE.Mesh(geometry, material);
     this.scene.add(this.dot);
 
@@ -50,8 +50,9 @@ export class PS2DotsComponentComponent implements OnInit, AfterViewInit, OnDestr
 
   private animate(): void {
     requestAnimationFrame(() => this.animate());
-    this.dot.rotation.x += 0.01;
-    this.dot.rotation.y += 0.01;
+		const time = Date.now() * 0.001;
+    this.dot.position.x = Math.sin(time * 0.5) * 3;
+    this.dot.position.y = Math.cos(time * 0.5) * 3;
     this.renderer.render(this.scene, this.camera);
   }
 

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PS2DotsComponentComponent } from "./ps2-dots-component/ps2-dots-component.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PS2DotsComponentComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
