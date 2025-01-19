@@ -1,3 +1,7 @@
+// Author: Haja Randriakoto
+// source: https://codepen.io/haja-ran/pen/ExYpoZp
+//tweak the code a little bit due to deprecated sass plugins
+
 @use "sass:color";
 @use "sass:math";
 @import url('https://fonts.googleapis.com/css?family=Play&amp;display=swap');
@@ -85,7 +89,7 @@ html, body {
 @for $i from 1 through 112 {
   .box-container:nth-child(#{$i}) .box {
     transform: translateZ(math.random(20)-20 + vw);
-    background-color: rgba(color.adjust($light, $lightness: -(math.random(55))), 0.95);
+    background-color: rgba(color.adjust($light, $lightness: -(math.random(55)) * 1%), 0.95);
   }
 }
 
