@@ -1,17 +1,26 @@
 name: Build and deploy portfolio
 
-# Trigger deployment on push to the main branch
+# Trigger deployment on push to the main branch or via manual dispatch
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to deploy"
+        required: true
+        default: "main"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       # Step 1: Checkout the repository
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch || github.ref_name }}
 
       # Step 2: Set up Node.js
       - name: Set up Node.js 18
@@ -30,4 +39,4 @@ jobs:
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
-          npx angular-cli-ghpages --dir=dist/portfolio
+          npx angular-cli-ghpages --dir=dist/portfolio --no-silent
