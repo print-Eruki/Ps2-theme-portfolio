@@ -37,8 +37,12 @@ jobs:
         run: npm run build --prod
 
       # Step 5: Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.email "palejorniel@gmail.com"
-          git config --global user.name "print-Eruki"
-          npx angular-cli-ghpages --dir=dist/portfolio --no-silent
+      # - name: Deploy to GitHub Pages
+      #   run: |
+      #     git config --global user.email "palejorniel@gmail.com"
+      #     git config --global user.name "print-Eruki"
+      #     npx angular-cli-ghpages --dir=dist/portfolio --no-silent
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/portfolio
