@@ -1,29 +1,33 @@
 name: Build and deploy portfolio
 
-# deploy on push
+# Trigger deployment on push to the main branch
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout the repository
       - uses: actions/checkout@v3
-      - name: Add Node.js 18
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js 18
         uses: actions/setup-node@v3
         with:
           node-version: 18
-        
-      - name: Install dependencies 
-        run: |
-          npm install
-      - name: Build angular app
-        run: npm run build
 
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the Angular app
+      - name: Build Angular app
+        run: npm run build --prod
+
+      # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
-          npm install angular-cli-ghpages@2.0.3
-        with:
-          branch: gh-pages
-          folder: dist
+          npx angular-cli-ghpages --dir=dist/portfolio
